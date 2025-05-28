@@ -32,11 +32,11 @@ int main()
                 << setw(2) << op->date_time.minutes << ":"
                 << setw(2) << op->date_time.seconds << "\n";
 
-            cout << op->type << "\n"
-                << op->account << "\n"
-                << op->amount << "\n"
-                << op->purpose << "\n";
-                
+            cout << "Тип операции.......: " << op->type << "\n"
+                << "Номер счёта........: " << op->account << "\n"
+                << "Сумма..............: " << fixed << setprecision(2) << op->amount << " руб.\n"
+                << "Назначение.........: " << op->purpose << "\n"
+                << string(40, '-') << endl;
         }
 
         for (int i = 0; i < size; ++i) {
