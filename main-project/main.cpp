@@ -16,6 +16,8 @@ int main()
     cout << "Laboratory work #4. GIT\n";
     cout << "Variant #7. bank_operations\n";
     cout << "Author: zuikov ivan\n";
+    cout << "24Pi1d\n";
+
     BankOperation* operations[MAX_FILE_ROWS_COUNT];
     int size = 0;
 
@@ -65,5 +67,7 @@ int main()
         return 1;
     }
 
+
+    cout << "24Pi1d\n";
     return 0;
 }
