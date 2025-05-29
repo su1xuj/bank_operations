@@ -1,23 +1,23 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../main-project/bank_operations.h" // Путь к заголовочному файлу
-#include "../main-project/processing.h" // Путь к заголовочному файлу с функцией process
+#include "../main-project/bank_operations.h" // ГЏГіГІГј ГЄ Г§Г ГЈГ®Г«Г®ГўГ®Г·Г­Г®Г¬Гі ГґГ Г©Г«Гі
+#include "../main-project/processing.h" // ГЏГіГІГј ГЄ Г§Г ГЈГ®Г«Г®ГўГ®Г·Г­Г®Г¬Гі ГґГ Г©Г«Гі Г± ГґГіГ­ГЄГ¶ГЁГҐГ© process
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace unittestproject
 {
-    // Функция для создания операции
+    // Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г±Г®Г§Г¤Г Г­ГЁГї Г®ГЇГҐГ°Г Г¶ГЁГЁ
     BankOperation* build_operation(const std::string& type, double amount)
     {
         BankOperation* operation = new BankOperation;
         strncpy_s(operation->type, type.c_str(), sizeof(operation->type) - 1);
-        operation->type[sizeof(operation->type) - 1] = '\0'; // гарантируем нуль-терминатор
+        operation->type[sizeof(operation->type) - 1] = '\0'; // ГЈГ Г°Г Г­ГІГЁГ°ГіГҐГ¬ Г­ГіГ«Гј-ГІГҐГ°Г¬ГЁГ­Г ГІГ®Г°
         operation->amount = amount;
         return operation;
     }
 
-    // Функция для удаления массива операций
+    // Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГіГ¤Г Г«ГҐГ­ГЁГї Г¬Г Г±Г±ГЁГўГ  Г®ГЇГҐГ°Г Г¶ГЁГ©
     void delete_operations(BankOperation* array[], int size)
     {
         for (int i = 0; i < size; i++)
@@ -50,7 +50,7 @@ namespace unittestproject
 
         TEST_METHOD(TestNoOperations)
         {
-            BankOperation** operations = nullptr; // Используем nullptr
+            BankOperation** operations = nullptr; // Г€Г±ГЇГ®Г«ГјГ§ГіГҐГ¬ nullptr
             Assert::AreEqual(0.0, process(operations, 0));
         }
 
@@ -72,6 +72,14 @@ namespace unittestproject
             operations[3] = build_operation("Expense", 50.0);
             Assert::AreEqual(350.0, process(operations, 4));
             delete_operations(operations, 4);
+        }
+        TEST_METHOD(TestOtherOperations)
+        {
+            BankOperation* operations[2];
+            operations[0] = build_operation("Transfer", 100.0);
+            operations[1] = build_operation("Transfer", 50.0);
+            Assert::AreEqual(0.0, process(operations, 2));
+            delete_operations(operations, 2);
         }
     };
 }
