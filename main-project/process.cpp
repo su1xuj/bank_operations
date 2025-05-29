@@ -1,6 +1,6 @@
 #include "processing.h"
 
-// Функция для обработки банковских операций и вычисления текущей суммы на счете
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г®ГЎГ°Г ГЎГ®ГІГЄГЁ ГЎГ Г­ГЄГ®ГўГ±ГЄГЁГµ Г®ГЇГҐГ°Г Г¶ГЁГ© ГЁ ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГї ГІГҐГЄГіГ№ГҐГ© Г±ГіГ¬Г¬Г» Г­Г  Г±Г·ГҐГІГҐ
 bool myStrEqual(const char* a, const char* b) {
     while (*a && *b) {
         if (*a != *b) return false;
@@ -13,7 +13,7 @@ double process(BankOperation* array[], int size) {
     double total = 0.0;
 
     for (int i = 0; i < size; i++) {
-        if (myStrEqual(array[i]->type, "Inome")) {
+        if (myStrEqual(array[i]->type, "Income")) {
             total += array[i]->amount;
         }
         else if (myStrEqual(array[i]->type, "Expense")) {
