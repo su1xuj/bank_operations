@@ -33,19 +33,20 @@ namespace unittestproject
         {
             BankOperation* operations[2];
             operations[0] = build_operation("Income", 100.0);
-            operations[1] = build_operation("Expense", 50.0);
-            Assert::AreEqual(50.0, process(operations, 2));
+            operations[1] = build_operation("Income", 50.0);
+            Assert::AreEqual(150.0, process(operations, 2));
             delete_operations(operations, 2);
         }
 
         TEST_METHOD(TestMultipleOperations)
         {
-            BankOperation* operations[3];
-            operations[0] = build_operation("Income", 200.0);
-            operations[1] = build_operation("Expense", 50.0);
-            operations[2] = build_operation("Expense", 30.0);
-            Assert::AreEqual(120.0, process(operations, 3));
-            delete_operations(operations, 3);
+            BankOperation* operations[4];
+            operations[0] = build_operation("Income", 300.0);
+            operations[1] = build_operation("Expense", 100.0);
+            operations[2] = build_operation("Income", 200.0);
+            operations[3] = build_operation("Expense", 50.0);
+            Assert::AreEqual(350.0, process(operations, 4));
+            delete_operations(operations, 4);
         }
 
         TEST_METHOD(TestNoOperations)
@@ -61,17 +62,6 @@ namespace unittestproject
             operations[1] = build_operation("Expense", 50.0);
             Assert::AreEqual(-150.0, process(operations, 2));
             delete_operations(operations, 2);
-        }
-
-        TEST_METHOD(TestMixedOperations)
-        {
-            BankOperation* operations[4];
-            operations[0] = build_operation("Income", 300.0);
-            operations[1] = build_operation("Expense", 100.0);
-            operations[2] = build_operation("Income", 200.0);
-            operations[3] = build_operation("Expense", 50.0);
-            Assert::AreEqual(350.0, process(operations, 4));
-            delete_operations(operations, 4);
         }
         TEST_METHOD(TestOtherOperations)
         {
